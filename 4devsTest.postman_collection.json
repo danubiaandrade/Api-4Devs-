@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "9d62e430-9f16-45a2-aff3-5d03cdc31a1a",
+		"name": "4devsTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26691305"
+	},
+	"item": [
+		{
+			"name": "Validacao_4devs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Validação do status code\r",
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Validação do campo Idade no responseBody\r",
+							"pm.test(\"Campo Idade consta no responseBody\", function () {\r",
+							"    pm.expect(pm.response.json().idade<=130).to.exist;\r",
+							"});\r",
+							"\r",
+							"// Validação do valor do campo sexo no responseBody\r",
+							"pm.test(\"Valor do campo sexo é igual a Masculino\", function () {\r",
+							"    pm.expect(pm.response.json().sexo).to.not.equal(\"Masculino\");\r",
+							"});\r",
+							"\r",
+							"// Validação do valor do campo sexo no responseBody\r",
+							"pm.test(\"Valor do campo sexo é igual a Feminino\", function () {\r",
+							"    pm.expect(pm.response.json().sexo).to.equal(\"Feminino\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"//verificar se o status da resposta e 200 ok\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//verificar se CPF é válido\r",
+							"pm.test(\"CPF is valid\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.include(\"CPF inválido\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "acao",
+							"value": "gerar_pessoa",
+							"type": "text"
+						},
+						{
+							"key": "pontuacao",
+							"value": "N",
+							"type": "text"
+						},
+						{
+							"key": "sexo",
+							"value": "H",
+							"type": "text"
+						},
+						{
+							"key": "txt_qtde",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "idade",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.4devs.com.br/ferramentas_online.php",
+					"protocol": "https",
+					"host": [
+						"www",
+						"4devs",
+						"com",
+						"br"
+					],
+					"path": [
+						"ferramentas_online.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validacao_CPF",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//verificar se o status da resposta e 200 ok\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//verificar se CPF é válido\r",
+							"pm.test(\"CPF is valid\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.include(\"CPF inválido\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "acao",
+							"value": "validar_cpf",
+							"type": "text"
+						},
+						{
+							"key": "txt_cpf",
+							"value": "37845979040",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.4devs.com.br/ferramentas_online.php",
+					"protocol": "https",
+					"host": [
+						"www",
+						"4devs",
+						"com",
+						"br"
+					],
+					"path": [
+						"ferramentas_online.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
